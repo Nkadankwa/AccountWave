@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_dashboard">
+
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.example.accountwave.ui.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboard_to_inventory"
+            app:destination="@id/nav_inventory"/>
+        <action
+            android:id="@+id/action_dashboard_to_budget"
+            app:destination="@id/nav_budget"/>
+        <action
+            android:id="@+id/action_dashboard_to_add_transaction"
+            app:destination="@id/nav_add_transaction" />
+        <action
+            android:id="@+id/action_dashboard_to_tab"
+            app:destination="@id/nav_tab" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_inventory"
+        android:name="com.example.accountwave.ui.InventoryFragment"
+        android:label="Inventory"
+        tools:layout="@layout/fragment_inventory">
+
+        <action
+            android:id="@+id/action_Inventory_to_dashboard"
+            app:destination="@id/nav_dashboard"/>
+        <action
+            android:id="@+id/action_Inventory_to_budget"
+            app:destination="@id/nav_budget"/>
+        <action
+            android:id="@+id/action_inventory_to_add_inventory"
+            app:destination="@id/nav_add_inventory" />
+        <action
+            android:id="@+id/action_inventory_to_add_transaction_inventory"
+            app:destination="@id/nav_add_inventory_transaction" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_budget"
+        android:name="com.example.accountwave.ui.BudgetFragment"
+        android:label="Budget"
+        tools:layout="@layout/fragment_budget">
+
+        <action
+            android:id="@+id/action_budget_to_inventory"
+            app:destination="@id/nav_inventory"/>
+        <action
+            android:id="@+id/action_budget_to_dashboard"
+            app:destination="@id/nav_dashboard"/>
+        <action
+            android:id="@+id/action_budget_to_add_transaction"
+            app:destination="@id/nav_add_transaction" />
+        <action
+            android:id="@+id/action_budget_to_barcode"
+            app:destination="@id/nav_barcode_and_receipt"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_inventory"
+        android:name="com.example.accountwave.ui.AddInventoryFragment"
+        android:label="Add Inventory"
+        tools:layout="@layout/fragment_add_inventory" >
+        <action
+            android:id="@+id/action_add_inventory_to_inventory"
+            app:destination="@id/nav_inventory"/>
+        <action
+            android:id="@+id/action_add_inventory_to_barcode"
+            app:destination="@id/nav_barcode_and_receipt">
+            <argument
+                android:name="scanMode"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_add_transaction"
+        android:name="com.example.accountwave.ui.SalesFragment"
+        android:label="Add Expense"
+        tools:layout="@layout/activity_add_expense" >
+        <action
+            android:id="@+id/action_transaction_to_budget"
+            app:destination="@id/nav_budget"/>
+        <action
+            android:id="@+id/action_transaction_to_barcode_scanner"
+            app:destination="@id/nav_barcode_and_receipt">
+            <argument
+                android:name="scanMode"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_tab"
+        android:name="com.example.accountwave.ui.AddTabFragment"
+        android:label="Add Tab"
+        tools:layout="@layout/activity_add_tab" >
+        <action
+            android:id="@+id/Tab_to_dashboard"
+            app:destination="@id/nav_dashboard"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_inventory_transaction"
+        android:name="com.example.accountwave.ui.AddInventoryTransactionFragment"
+        android:label="Add Tab"
+        tools:layout="@layout/fragment_add_inventory_transaction" >
+        <action
+            android:id="@+id/transaction_to_inventory"
+            app:destination="@id/nav_inventory"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_barcode_and_receipt"
+        android:name="com.example.accountwave.ui.BarcodeScannerFragment"
+        android:label="Camera"
+        tools:layout="@layout/fragment_barcode_scanner" >
+        <action
+            android:id="@+id/barcode_to_transaction"
+            app:destination="@id/nav_add_inventory"/>
+        <action
+            android:id="@+id/barcode_to_budget"
+            app:destination="@id/nav_budget"/>
+        <argument
+            android:name="scanMode"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
